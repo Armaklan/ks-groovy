@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Groovy</title>
+
+		<meta name="description" content="Groovy">
+		<meta name="author" content="ZUBER Lionel">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<!-- <link rel="stylesheet" href="css/theme/zen.css" id="theme"> -->
+
+		<link rel="stylesheet" href="css/theme/zen.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<header>
+			<div id="logo_crea">
+				<img src="image/logo_crea.png">
+			</div>
+
+			<div id="logo_cgi">
+				<img src="image/logo_cgi.png">
+			</div>
+		</header>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<img src="image/tags.png">
+				</section>
+
+				<section>
+					<section>
+						<h1>Java On Steroid</h1>
+						<img src="image/java_to_groovy.png">
+						<aside class="notes">
+							<p>Descendant direct de Java.</p>
+							<p>Proche de Java (facile à apprendre).</p>
+							<p>Prévu pour collaborer et communiquer avec Java.</p>
+							<p>Java, mais en mieux ! </p>
+						</aside>
+					</section>
+					<section>
+						<h2>Du code Java, ou pas...</h2>
+						<pre>
+							<code data-trim>
+public class Pizza {
+	private String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String what() {
+		return "Hello, you eat a " + name;
+	}
+}
+
+Pizza pizz = new Pizza();
+pizza.setName("Cannibale");
+System.out.println(pizza.what());
+
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>Le même, en groovy</h2>
+						<pre>
+							<code data-trim>
+public class Pizza {
+	String name;
+
+	String what() {
+		"Hello, you eat a #{name}"
+	}
+}
+
+def pizz = new Pizza(name: "Cannibale")
+println perso.what()
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h1>Simple</h1>
+						<img src="image/DukeGinaChair.jpg">
+						<aside class="notes">
+							<p>Objectif : prise en main rapide</p>
+							<p>Moins de verbosité => moins de temps perdues</p>
+						</aside>
+					</section>
+					<section>
+						<h1>Dynamique</h1>
+						<img src="image/tron.jpg" width="70%">
+						<aside class="notes">
+							<p>Typage dynamique</p>
+							<p>Implication ? Moins de code, plus de facilité.</p>
+						</aside>
+					</section>
+					<section>
+						<h1>Modern</h1>
+						<img src="image/USS-Enterprise.jpg" width="70%">
+						<aside class="notes">
+							<p>Lambda, Closure, DSL, ... </p>
+							<p>Inclut les dernières innovations</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Closure & Lambda</h2>
+						<pre>
+							<code data-trim>
+def oldThan18 = { it.age >= 18 }
+def listOldUser = users.findAll(oldThan18);
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>DSL</h2>
+						<pre>
+							<code data-trim>
+take 15.min, of: pause, after: 1.hours
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h1>Complet !</h1>
+						<img src="image/gadget.jpg" />
+						<aside class="notes">
+							<p>On peut tout faire en groovy, de A à Z</p>
+							<p>Ecosystème Java + Ecosystème groovy !</p>
+						</aside>
+					</section>
+					<section>
+						<h1>En résumé...</h1>
+						<img src="image/groovy_java.png">
+					</section>
+					<section>
+						<blockquote>
+						Groovy, c'est comme Java <br>mais sans le costume trois pièces !
+						<br>
+						Guillaume Laforge
+						</blockquote>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Groovy as Scripting</h1>
+						<img src="image/savant-fou-crayon.jpg" width="40%">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Groovy as Java Helper</h1>
+						<img src="image/hand.png" width="30%">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Groovy as Project Technology</h1>
+						<img src="image/drafting_table.jpg" width="30%">
+					</section>
+
+					<section>
+						<h1>100% Compatible Java !</h1>
+						<p>Swing, Servlet, ...</p>
+						<h2 class="fragment">Mais on peut faire mieux ! </h2>
+					</section>
+
+					<section>
+						<h1>Du Web avec Grails</h1>
+						<img src="image/grails.jpg" width="30%">
+					</section>
+
+					<section>
+						<img src="image/ror2.png" width="80%">
+						<aside class="notes">
+							Full Stacked,
+							Scaffolding,
+							Système de plugin, ...
+						</aside>
+					</section>
+
+					<section>
+						<ul>
+							<li>Full stacked</li>
+							<li>Structure du code</li>
+							<li>Scaffolding</li>
+							<li>Plugins</li>
+						</ul>
+					</section>
+
+					<section>
+						<h1>Du Desktop avec Griffon</h1>
+						<img src="image/griffon.png" width="25%">
+					</section>
+
+				</section>
+
+				<section>
+					<h1>THE END</h1>
+					<img src="image/Try-Not.jpg" width="60%">
+				</section>
+
+			</div>
+
+		</div>
+
+		<footer>
+			<div align="center">
+				Par <a href="mailto:lionel.zuber@armaklan.org">ZUBER Lionel</a>
+			</div>
+		</footer>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: false,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'zoom', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/print-pdf/print-pdf.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
