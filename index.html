@@ -171,7 +171,43 @@ take 15.min, of: pause, after: 1.hours
 				<section>
 					<section>
 						<h1>Groovy as Scripting</h1>
-						<img src="image/savant-fou-crayon.jpg" width="40%">
+						<img src="image/savant-fou-crayon.jpg" width="30%">
+					</section>
+
+					<section>
+						<blockquote>
+							<p>Une règle : faites ce qu'il faut pour que cela fonctionne. Un outil : débrouillez-vous !
+							<br>
+							Olivier Lockert</p>
+						</blockquote>
+					</section>
+					<section>
+						<h2>Un exemple parmis d'autres... </h2>
+						<pre>
+							<code data-trim>
+import groovy.json.JsonSlurper;
+
+String fileContents = new File('visu/replay.js').text
+fileContents.eachLine{ line ->
+	def result = new JsonSlurper().parseText(line)
+	def game_length = result.game_length
+	def state = "perdu"
+	if(result.rank[0] == 1) {  state = "gagné" }
+
+	printDataLine("Players", result.playernames)
+	printDataLine("Result", result.rank)
+	printDataLine("Status", result.status)
+	println "Vous avez $state la partie en $game_length tour."
+}
+
+
+def printDataLine(def label, def data) {
+	resultLine = "$label : \t"
+	data.each{player -> resultLine += "| $player \t"}
+	println(resultLine)
+}
+							</code>
+						</pre>
 					</section>
 				</section>
 
@@ -180,12 +216,115 @@ take 15.min, of: pause, after: 1.hours
 						<h1>Groovy as Java Helper</h1>
 						<img src="image/hand.png" width="30%">
 					</section>
+
+					<section>
+						<h1>Gradle et le packaging</h1>
+						<img src="image/gradle-logo.png" alt="" width="50%">
+					</section>
+
+					<section>
+						<h2>Gradle in Action</h2>
+						<pre>
+							<code data-trim>
+apply plugin: 'eclipse'
+apply plugin: 'groovy'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.0.5'
+    testCompile 'junit:junit:4.11'
+}
+
+task('copy', type: Copy) {
+    from(file('srcDir'))
+    into(buildDir)
+}
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h1>Points d'extensions<br>Plugins</h1>
+						<img src="image/plugin.png" alt="" width="30%">
+						<aside class="notes">
+							<p>Utiliser une api java en groovy ? Facile !</p>
+							<p>Plus simple et rapide pour la prise en main...</p>
+							<p>Surtout sur de petit travaux..</p>
+
+							<p>Peut être interprété et non compilé.</p>
+						</aside>
+					</section>
+
+					<section>
+						<h1>Tests</h1>
+						<img src="image/To_Do_List.jpg" alt="" width="50%">
+						<aside class="notes">
+							<ul>
+								<li>Mentionner la puissance des Assert</li>
+								<li>Légereté</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h1>Spock</h1>
+						<img src="image/spock.jpg" alt="" width="40%">
+					</section>
+
+					<section>
+						<h2>Spock in Action</h2>
+						<pre>
+							<code data-trim>
+class PlanetTest extends spock.lang.Specification {
+
+    def "Calcul distance between to planet"() {
+    	given: "Initialize game"
+    	def game = new Game("")
+    	def first = Planet.parse(firstTokens, game.planets)
+    	def second = Planet.parse(secondTokens, game.planets)
+
+        expect: "Check distance correctly calcul"
+        Game.distance(first, second) == result
+
+        where:
+        firstTokens											| secondTokens 												| result
+        ['E',14.607868701123053,16.142563056352653,0,0,2]	| ['E',19.60609476210437,13.972250406328175,0,18,2] 		| 6.0
+        ['E',14.607868701123053,16.142563056352653,0,0,2]	| ['M',0.5495124796968334,10.88556823190577,3,14]	 		| 16.0
+        ['E',9.904971573452196,4.426803509261771,0,58,2]	| ['E',19.60609476210437,13.972250406328175,0,18,2] 		| 14.0
+    }
+
+}
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>En cas d'erreur</h2>
+						<pre>
+							<code data-trim>
+Test Failure: Calcul distance between to planet(PlanetTest)
+Condition not satisfied:
+
+Game.distance(first, second) == result
+     |        |      |       |  |
+     6.0      |      |       |  5.0
+              |      |       false
+              |      EconomicPlanet@5797c0
+              EconomicPlanet@d6c5da
+
+	at PlanetTest.Calcul distance between to planet(Test.groovy:29)
+							</code>
+						</pre>
+					</section>
 				</section>
 
 				<section>
 					<section>
-						<h1>Groovy as Project Technology</h1>
-						<img src="image/drafting_table.jpg" width="30%">
+						<h1>Groovy as <br>Project Technology</h1>
+						<img src="image/drafting_table.jpg" width="20%">
 					</section>
 
 					<section>
@@ -202,19 +341,13 @@ take 15.min, of: pause, after: 1.hours
 					<section>
 						<img src="image/ror2.png" width="80%">
 						<aside class="notes">
-							Full Stacked,
-							Scaffolding,
-							Système de plugin, ...
-						</aside>
-					</section>
-
-					<section>
 						<ul>
 							<li>Full stacked</li>
 							<li>Structure du code</li>
 							<li>Scaffolding</li>
 							<li>Plugins</li>
 						</ul>
+						</aside>
 					</section>
 
 					<section>
